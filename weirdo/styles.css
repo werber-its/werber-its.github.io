@@ -43,6 +43,7 @@ img{
     text-decoration:underline;
     border: 25px solid white;
     font-family: cursive;
+    box-sizing: border-box;
 }
 #text-overlay h2{
     color: cyan;
@@ -50,6 +51,8 @@ img{
     border: 10px dotted white;
     padding: 10px;
     font-style: italic;
+    box-sizing: border-box;
+
 }
 #text-overlay h3{
     color: yellow;
@@ -57,11 +60,15 @@ img{
     line-height: 200%;
     font-family: 'Courier New', Courier, monospace;
     padding: 2%;
+    box-sizing: border-box;
+
 }
 #text-overlay h4{
     color: magenta;
     border: 50px dashed black;
     padding: 5%;
+    box-sizing: border-box;
+
 }
 
 .blur{
