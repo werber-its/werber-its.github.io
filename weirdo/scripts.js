@@ -11,6 +11,6 @@ function myFunction() {
     const scrolled = (winScroll / height) * 100;
     const body =   document.getElementById("text-overlay");
     console.log('body',body)
-body.style.border = `25px dotted #${getRandomColor()}`;
+body.style.border = `5px dotted #${getRandomColor()}`;
 }
 
