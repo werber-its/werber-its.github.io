@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+
+
+
+</head>
+
+
+<body>
+    <link rel="stylesheet" href="https://use.typekit.net/nub1dvy.css">
+
+    <style>
+        /* START Variables and Global Settings */
+        :root {
+            --dark-violet: #301b46;
+            --violet: #563280;
+            --sky-blue: #6ccbff;
+            --melon: #f2b1a0;
+
+            --header-height: 120px;
+            --main-nav-height: 55px;
+            --header-main-nav-height: 175px;
+            --sub-nav-height: 65px;
+
+            --mobile-header-height: 64px;
+
+            --scroll-top-margin: 228px;
+
+            --header-member-box-width: 275px;
+
+            --main-font-bold: adelle-sans, sans-serif;
+            --bold-font-weight: 700;
+
+
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: adelle-sans, sans-serif;
+            font-style: normal;
+            /* scroll-behavior: smooth; */
+        }
+
+
+        * {
+            transition: all .55s ease-in-out;
+        }
+
+        /* END Variables and Global Settings */
+
+        /* START MEDIA QUERIES FOR DIFFERENT MENUS */
+        @media screen and (max-width: 900px) {
+
+            #nkba-icon-header-desktop {
+                display: none !important;
+            }
+        }
+
+        @media screen and (min-width: 900px) {
+
+            #nkba-icon-header-mobile {
+                display: none !important;
+            }
+        }
+                /* END MEDIA QUERIES FOR DIFFERENT MENUS */
+
+
+        /* START Header - Top line */
+
+
+        .nkba-icon-header {
+            height: var(--header-height);
+            width: 100%;
+            background-color: var(--dark-violet);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+        }
+        .nkba-icon-header svg{
+            height: 95px;
+        }
+
+        .nkba-icon-header .nkba-icon-header-sign-up {
+            color: white;
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: var(--header-height);
+            width: var(--header-member-box-width);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nkba-icon-header .nkba-icon-header-sign-up .member-cta-header {
+            font-size: 22px;
+            font-family: var(--main-font-bold);
+            /* TODO : get fonts */
+        }
+
+        .nkba-icon-header .nkba-icon-header-sign-up .nkba-icon-header-sign-up-log-in {
+            font-size: 12px;
+
+        }
+
+        .nkba-icon-header .nkba-icon-header-sign-up .nkba-icon-header-sign-up-log-in b {
+            font-family: var(--main-font-bold);
+        }
+
+        /* END Header - Top line */
+
+
+
+
+        /* START Header - Main nav line */
+        .nkba-icon-nav {
+            height: var(--main-nav-height);
+            width: 100%;
+            background-color: var(--violet);
+            color: white;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: var(--header-height);
+        }
+
+        .nkba-icon-nav .nkba-icon-nav-item {
+            box-sizing: border-box;
+            height: var(--main-nav-height);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto 10px;
+            padding: 15px;
+        }
+
+        .nkba-icon-nav #search {
+            box-sizing: border-box;
+            height: var(--main-nav-height);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto 10px;
+            padding: 15px;
+        }
+
+        .nkba-icon-nav .nkba-icon-nav-item-display-none {
+            display: none !important;
+        }
+
+        .nkba-icon-nav a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .nkba-icon-nav .nkba-icon-nav-item-active {
+            background-color: var(--dark-violet);
+            font-family: var(--main-font-bold);
+            font-weight: var(--bold-font-weight);
+            /* TODO : is this the right way */
+        }
+
+        /* END Header - Main nav line */
+
+
+
+        /* START Header - Main nav line (SEARCH)*/
+
+        .nkba-icon-nav .nkba-icon-nav-search-expanded {
+            box-sizing: border-box;
+            height: var(--main-nav-height);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto 10px;
+            padding: 15px;
+            width: 50%;
+            background-color: var(--dark-violet);
+            position: relative;
+        }
+
+        .nkba-icon-nav .nkba-icon-nav-search-expanded-display-none {
+            display: none;
+        }
+
+        .nkba-icon-nav .nkba-icon-nav-search-expanded .nkba-icon-nav-search-expanded-close-icon {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+        }
+
+        .nkba-icon-nav .nkba-icon-nav-search-expanded .nkba-icon-nav-search-expanded-search-icon {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+        }
+
+        .nkba-icon-nav .nkba-icon-nav-search-expanded .nkba-icon-nav-search-expanded-input {
+            position: absolute;
+            left: 45px;
+            top: 18px;
+            background: transparent;
+            border: none;
+            font-size: 18px;
+            color: white;
+            min-width: 80%;
+        }
+
+        /* END Header - Main nav line (SEARCH)*/
+
+
+
+        /* START Header - Secondary nav line */
+        .nkba-icon-sub-nav {
+            height: var(--main-nav-height);
+            width: 100%;
+            background-color: var(--dark-violet);
+            color: white;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: var(--header-main-nav-height)
+        }
+
+        .nkba-icon-sub-nav-display-none {
+            display: none;
+        }
+
+        .nkba-icon-sub-nav a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .nkba-icon-sub-nav .nkba-icon-sub-nav-item {
+            box-sizing: border-box;
+            height: var(--main-nav-height);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto 10px;
+            padding: 15px;
+        }
+
+        .nkba-icon-sub-nav .nkba-icon-sub-nav-item-active {
+            font-family: var(--main-font-bold);
+            font-weight: var(--bold-font-weight);
+            border-bottom: 2px solid white;
+            /* TODO : is this the right way */
+        }
+
+        /* END Header - Secondary nav line */
+
+
+        /* start mobile nav */
+        #nkba-icon-header-mobile {
+            height: var(--mobile-header-height);
+            background-color: var(--dark-violet);
+            color: white;
+            position: sticky;
+            width: 100%;
+            left: 0;
+            top: 0;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+        }
+
+        #nkba-icon-header-mobile svg{
+            margin-left: 10px;
+            height: 40px;
+        }
+        #nkba-icon-header-mobile #nkba-icon-menu-toggle-mobile{
+            position: absolute;
+            height: var(--mobile-header-height);
+            width: var(--mobile-header-height);
+            background-color: var(--sky-blue);
+            color: var(--dark-violet);
+            right:0;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #nkba-icon-menu-mobile{
+            top: var(--mobile-header-height);
+            background-color: var(--dark-violet);
+            min-height: 100vh;
+        }
+        .mobile-display-none{
+            display:none;
+        }
+
+
+    </style>
+
+    <header id="nkba-icon-header-desktop">
+        <div class="nkba-icon-header">
+            <a href="#homepage"><svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 450.32 99.92"><defs><style>.cls-1{fill:#fff}</style></defs><path d="M255.77 0h1.74v99.92h-1.74zM176.75 59.3c-1.77-6.62-6.78-11.39-15.05-13.37 6.79-2.18 11.05-7.13 11.05-14.38 0-11.05-8.18-20.31-22.8-20.31h-40.44L83.14 47.15V11.23H67.02v78.44h16.12V67.95l7.6-9.1 20.84 30.77h39.68c4.67.08 9.3-.92 13.53-2.92l11.95-27.4Zm-41.03-33.86h13.27c4.96 0 7.83 2.88 7.83 7.37s-3.45 7.36-8.63 7.36h-12.47V25.44Zm-16.12 47.5-18.03-26.2 18.03-24.35v50.55Zm30.98 2.47h-14.85V53.88h13.9c7.36 0 11.62 4.37 11.62 10.7s-4.1 10.82-10.67 10.82ZM200.91 42.73l10.4 24.46H190.8l10.11-24.46Zm-.41-32.5-34.61 79.39h15.63l3.7-8.88h31.86l3.75 8.88h17.11l-36.05-79.39h-1.39ZM49.37 11.23v43.95L2.34 11.23H0v78.45h15.12l-.02-43.9 47.05 43.9h2.34V11.23H49.37zM428.88 42.74l-4.04-1.73c-6.91-3-9.92-4.96-9.92-9.81 0-3.92 3-6.91 7.74-6.91s7.6 1.95 10.38 6.91l12.56-8.07c-5.31-9.34-12.68-12.91-22.93-12.91-11.04 0-19.01 5.42-22.16 13.38V11.07h-16.16V89.5h16.15v-7.07c5.38 4.92 13.03 8.13 23.07 8.13 15.34 0 26.75-7.95 26.75-22.48 0-13.49-7.72-19.49-21.44-25.34Zm-5.66 33.52c-7.95 0-12.45-4.15-15.9-9.8l-6.82 3.95V40.42c2.78 7.37 9.24 11.75 17.88 15.43l4.03 1.73c7.39 3.23 11.77 5.19 11.77 10.73 0 4.61-4.26 7.95-10.96 7.95ZM382.16 53.28c-2.63-3.6-6.73-6.22-12.34-7.55 6.79-2.18 11.04-7.13 11.04-14.38 0-11.04-8.17-20.29-22.78-20.29h-40.34L291.4 46.95V11.07h-16.05v78.3h16.05V67.71l7.59-9.09 20.83 30.75h39.65c10.6 0 18.47-4.33 22.7-11.15V53.28Zm-38.23-28.06h13.27c4.95 0 7.82 2.87 7.82 7.36s-3.45 7.36-8.63 7.36h-12.47V25.22Zm-16.11 47.5L309.8 46.55l18.02-24.34v50.51Zm30.95 2.47h-14.84V53.67h13.91c7.37 0 11.62 4.37 11.62 10.7s-4.14 10.81-10.69 10.81Z" class="cls-1"/></svg></a>
+            <div class="nkba-icon-header-sign-up">
+                <div class="member-cta-header">
+                    <b> Become a member</b>
+                </div>
+                <div class="nkba-icon-header-sign-up-log-in">
+                    Already a member? <b>Log in</b>
+                </div>
+            </div>
+        </div>
+        <div class="nkba-icon-nav">
+            <a href="#learning" name="learning" class="nkba-icon-nav-item">Learning</a>
+            <a href="#insights" name="insights" class="nkba-icon-nav-item">Insights</a>
+            <a href="#events" name="events" class="nkba-icon-nav-item">Events</a>
+            <a href="#video" name="video" class="nkba-icon-nav-item">Video</a>
+            <a href="#resources" name="resources" class="nkba-icon-nav-item">Resources</a>
+            <a href="#about" name="about" class="nkba-icon-nav-item">About</a>
+
+            <a href="#search" id="search"><img class="nkba-icon-nav-item-search"
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFNSURBVHgB7VXLUcMwEF1xdwGmADeQAmggFJAGTAE0EO40QApI7oQ7FIAbSAFQQLibt/hpRjiRsnI+M8nkzTxrxlrrrfZnkSvOHc5i1LZtgWUCVuQPuAaXYOOc+xYjnEGoplgKM4jOZB+oGDgHP8ElOAHLYL8Cx+ArbaayD/QAfxBvGrMrA8ceZQjo+d/NjPZFcNNRyvYm8v6eay0GIH9aQE+9b22CDJ96ucqqPuca6Sr3TnIEpSt7xUryoaJFWFwWQY+1HAHbBL+4VpKPW32kUrEhSGO9XZVqhz4YRnWySdnFQroA/ZSx4oGrqZX+oddXY4N9ndO3sUM0pO/BtCkjjvmJZBpvu4a35uRZWAzS5ccXhDrgp4q+a2n3hjqYDhKkqOZSm7kOhCVw4AMCC0bgxSJqBkM4YriLyP78IH+PTKe86JBeHix6GrErLh+/PuwBl44NZO0AAAAASUVORK5CYII=" /></a>
+            <div class="nkba-icon-nav-search-expanded nkba-icon-nav-search-expanded-display-none" id="nkba-icon-search">
+                <div class="nkba-icon-nav-search-expanded-search-icon"><img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFNSURBVHgB7VXLUcMwEF1xdwGmADeQAmggFJAGTAE0EO40QApI7oQ7FIAbSAFQQLibt/hpRjiRsnI+M8nkzTxrxlrrrfZnkSvOHc5i1LZtgWUCVuQPuAaXYOOc+xYjnEGoplgKM4jOZB+oGDgHP8ElOAHLYL8Cx+ArbaayD/QAfxBvGrMrA8ceZQjo+d/NjPZFcNNRyvYm8v6eay0GIH9aQE+9b22CDJ96ucqqPuca6Sr3TnIEpSt7xUryoaJFWFwWQY+1HAHbBL+4VpKPW32kUrEhSGO9XZVqhz4YRnWySdnFQroA/ZSx4oGrqZX+oddXY4N9ndO3sUM0pO/BtCkjjvmJZBpvu4a35uRZWAzS5ccXhDrgp4q+a2n3hjqYDhKkqOZSm7kOhCVw4AMCC0bgxSJqBkM4YriLyP78IH+PTKe86JBeHix6GrErLh+/PuwBl44NZO0AAAAASUVORK5CYII=">
+                </div>
+                <div class="nkba-icon-nav-search-expanded-close-icon" id="close-search"><img
+                        class="nkba-icon-close-search"
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACPSURBVHgB7dRBDoAgDETRxovam8lNR0ggUYPQgbLjJ26U+haCIrudVwCueJ1ClmbSLDuUsJIZzVjJjsbFindd9IOlVJgYdBpjUDfMgrpjLXQZ1kDXYR1UmXccwgXjvfkq36y6kVZhioGfwzD2eOaLwrD13VAQ52waxcChnkLj4sBgP2gQpoyqkGU0yG7n1Q1aDiM3e2a+OQAAAABJRU5ErkJggg==">
+                </div>
+
+                <input class="nkba-icon-nav-search-expanded-input" type="text"
+                    placeholder="Search NKBA, Members, or Chapters"></input>
+            </div>
+        </div>
+        <div class="nkba-icon-sub-nav nkba-icon-sub-nav-display-none" id="nkba-icon-sub-nav">
+            <a href="#" class="nkba-icon-sub-nav-item">Certification</a>
+            <a href="#" class="nkba-icon-sub-nav-item">Badges</a>
+            <a href="#" class="nkba-icon-sub-nav-item">Planning Guidelines</a>
+            <a href="#" class="nkba-icon-sub-nav-item">Education</a>
+            <a href="#" class="nkba-icon-sub-nav-item">Webinars</a>
+            <a href="#surprise" class="nkba-icon-sub-nav-item">New Item Surprise</a>
+            <a href="#" class="nkba-icon-sub-nav-item">VFTI</a>
+            <a href="#" class="nkba-icon-sub-nav-item">Knowledge</a>
+        </div>
+    </header>
+
+
+    <header id="nkba-icon-header-mobile">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 450.32 99.92"><defs><style>.cls-1{fill:#fff}</style></defs><path d="M255.77 0h1.74v99.92h-1.74zM176.75 59.3c-1.77-6.62-6.78-11.39-15.05-13.37 6.79-2.18 11.05-7.13 11.05-14.38 0-11.05-8.18-20.31-22.8-20.31h-40.44L83.14 47.15V11.23H67.02v78.44h16.12V67.95l7.6-9.1 20.84 30.77h39.68c4.67.08 9.3-.92 13.53-2.92l11.95-27.4Zm-41.03-33.86h13.27c4.96 0 7.83 2.88 7.83 7.37s-3.45 7.36-8.63 7.36h-12.47V25.44Zm-16.12 47.5-18.03-26.2 18.03-24.35v50.55Zm30.98 2.47h-14.85V53.88h13.9c7.36 0 11.62 4.37 11.62 10.7s-4.1 10.82-10.67 10.82ZM200.91 42.73l10.4 24.46H190.8l10.11-24.46Zm-.41-32.5-34.61 79.39h15.63l3.7-8.88h31.86l3.75 8.88h17.11l-36.05-79.39h-1.39ZM49.37 11.23v43.95L2.34 11.23H0v78.45h15.12l-.02-43.9 47.05 43.9h2.34V11.23H49.37zM428.88 42.74l-4.04-1.73c-6.91-3-9.92-4.96-9.92-9.81 0-3.92 3-6.91 7.74-6.91s7.6 1.95 10.38 6.91l12.56-8.07c-5.31-9.34-12.68-12.91-22.93-12.91-11.04 0-19.01 5.42-22.16 13.38V11.07h-16.16V89.5h16.15v-7.07c5.38 4.92 13.03 8.13 23.07 8.13 15.34 0 26.75-7.95 26.75-22.48 0-13.49-7.72-19.49-21.44-25.34Zm-5.66 33.52c-7.95 0-12.45-4.15-15.9-9.8l-6.82 3.95V40.42c2.78 7.37 9.24 11.75 17.88 15.43l4.03 1.73c7.39 3.23 11.77 5.19 11.77 10.73 0 4.61-4.26 7.95-10.96 7.95ZM382.16 53.28c-2.63-3.6-6.73-6.22-12.34-7.55 6.79-2.18 11.04-7.13 11.04-14.38 0-11.04-8.17-20.29-22.78-20.29h-40.34L291.4 46.95V11.07h-16.05v78.3h16.05V67.71l7.59-9.09 20.83 30.75h39.65c10.6 0 18.47-4.33 22.7-11.15V53.28Zm-38.23-28.06h13.27c4.95 0 7.82 2.87 7.82 7.36s-3.45 7.36-8.63 7.36h-12.47V25.22Zm-16.11 47.5L309.8 46.55l18.02-24.34v50.51Zm30.95 2.47h-14.84V53.67h13.91c7.37 0 11.62 4.37 11.62 10.7s-4.14 10.81-10.69 10.81Z" class="cls-1"/></svg>
+<div id="nkba-icon-menu-toggle-mobile">
+|||
+</div>
+    </header>
+    <div id="nkba-icon-menu-mobile" class="mobile-display-none">
+
+    </div>
+
+
+
+
+</body>
+<script src="./scripts.js"></script>
+
+</html>
