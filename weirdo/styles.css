@@ -37,13 +37,14 @@ img{
 #text-overlay h1{
     color: magenta;
     letter-spacing: 10px;
-    font-size: 100px;
+    font-size: 75px;
     margin: 0;
     padding:0;
     text-decoration:underline;
     border: 25px solid white;
     font-family: cursive;
     box-sizing: border-box;
+    word-wrap: break-word;
 }
 #text-overlay h2{
     color: cyan;
