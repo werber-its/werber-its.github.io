@@ -45,6 +45,7 @@ img{
     font-family: cursive;
     box-sizing: border-box;
     word-wrap: break-word;
+    max-width: 90%;
 }
 #text-overlay h2{
     color: cyan;
