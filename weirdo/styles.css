@@ -50,8 +50,8 @@ img{
 #text-overlay h2{
     color: cyan;
     background-color: black;
-    border: 10px dotted white;
-    padding: 10px;
+    border: 10px dotted magenta;
+    padding: 25px;
     font-style: italic;
     box-sizing: border-box;
 
