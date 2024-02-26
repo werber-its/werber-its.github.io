@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Comparison</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #differences { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Compare Units</h1>
+    <label for="citySelect">Select a city:</label>
+    <select id="citySelect">
+        <option value="dallas">Dallas</option>
+        <option value="stamford">Stamford</option>
+        <option value="jersey-city">Jersey City</option>
+        <option value="newark">Newark</option>
+        <option value="harrison" selected>Harrison</option>
+        <option value="staten-island">Staten Island</option>
+    </select>
+    <button id="compareBtn">Compare Units</button>
+    <div id="unitcount"></div>
+    <div id="differences"></div>
+    <div id="duplicates"></div>
+
+
+    <script>
+        const baseurl1 = 'https://getfilteredunitsbycity-rypeipxddq-uc.a.run.app/?city=';
+        const baseurl2 = 'https://getallunits-rypeipxddq-uc.a.run.app/?city=';
+
+        async function fetchData(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error(`Could not fetch data from ${url}: ${error}`);
+            }
+        }
+
+        async function getCount(city) {
+            const url = `${baseurl1}${city}`;
+            const data = await fetchData(url);
+            return data.units.length
+        }
+
+
+        async function compareUnits(city) {
+            const url1 = `${baseurl1}${city}`;
+            const url2 = `${baseurl2}${city}`;
+            const data1 = await fetchData(url1);
+            const data2 = await fetchData(url2);
+
+            const units1 = data1.units;
+            const units2 = data2;
+
+            const map1 = new Map(units1.map(unit => [unit.id, unit]));
+            const map2 = new Map(units2.map(unit => [unit.id, unit]));
+      
+            const differences = [];
+
+            for (const [id, unit] of map1) {
+                if (!map2.has(id)) {
+                    differences.push({ id: unit.unitTypeId, unitNumber: unit.unitNumber });
+                }
+            }
+
+            for (const [id, unit] of map2) {
+                if (!map1.has(id)) {
+                    differences.push({ id, unitNumber: unit.unitNumber });
+                }
+            }
+
+            return differences;
+        }
+
+        async function duplicateUnits(city) {
+            const url1 = `${baseurl1}${city}`;
+            const data1 = await fetchData(url1);
+
+            const units1 = data1.units;
+
+            const map1 = new Map(units1.map(unit => [unit.id, unit]));
+      
+            const differences = [];
+
+            for (const [id, unit] of map1) {
+                const count = Array.from(map1.values()).filter(u => u.id === id).length;
+                if (count > 1) {
+                    differences.push({ id: unit.unitTypeId, unitNumber: unit.unitNumber });
+                }
+            }
+
+
+            return differences;
+        }
+
+        document.getElementById('compareBtn').addEventListener('click', () => {
+            const city = document.getElementById('citySelect').value;
+            const countDiv = document.getElementById('unitcount');
+
+            getCount(city).then(count => {
+                countDiv.innerHTML = `<h2>Filtered Unit Count: ${count}</h2>`;
+            });
+
+            duplicateUnits(city).then(differences => {
+                const outputDiv = document.getElementById('duplicates');
+                if (differences.length > 0) {
+                    outputDiv.innerHTML = '<h2>Duplicate Units:</h2>' + differences.map(d => `<p>ID: ${d.id}, Unit Number: ${d.unitNumber}</p>`).join('');
+                } else {
+                    outputDiv.innerHTML = '<p>No Duplicate Units.</p>';
+                }
+            });
+
+            compareUnits(city).then(differences => {
+                const outputDiv = document.getElementById('differences');
+                if (differences.length > 0) {
+                    outputDiv.innerHTML = '<h2>Excluded Units:</h2>' + differences.map(d => `<p>ID: ${d.id}, Unit Number: ${d.unitNumber}</p>`).join('');
+                } else {
+                    outputDiv.innerHTML = '<p>No Excluded Units.</p>';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
