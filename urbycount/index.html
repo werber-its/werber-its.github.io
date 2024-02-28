@@ -24,6 +24,7 @@
     <div id="unitcount"></div>
     <div id="differences"></div>
     <div id="duplicates"></div>
+    <div id="included-units"></div>
 
 
     <script>
@@ -99,6 +100,28 @@
             return differences;
         }
 
+        async function includedUnits(city) {
+            const url1 = `${baseurl1}${city}`;
+            const data1 = await fetchData(url1);
+
+            const units1 = data1.units;
+
+            const map1 = new Map(units1.map(unit => [unit.id, unit]));
+      
+            const units = [];
+
+            for (const [id, unit] of map1) {
+                const count = Array.from(map1.values()).filter(u => u.id === id).length;
+                units.push({ id: unit.unitTypeId, unitNumber: unit.unitNumber });
+                
+            }
+
+
+            return units;
+        }
+
+
+
         document.getElementById('compareBtn').addEventListener('click', () => {
             const city = document.getElementById('citySelect').value;
             const countDiv = document.getElementById('unitcount');
@@ -113,6 +136,15 @@
                     outputDiv.innerHTML = '<h2>Duplicate Units:</h2>' + differences.map(d => `<p>ID: ${d.id}, Unit Number: ${d.unitNumber}</p>`).join('');
                 } else {
                     outputDiv.innerHTML = '<p>No Duplicate Units.</p>';
+                }
+            });
+
+            includedUnits(city).then(units => {
+                const outputDiv = document.getElementById('included-units');
+                if (units.length > 0) {
+                    outputDiv.innerHTML = '<h2>Included Units:</h2>' + units.map(d => `<p>ID: ${d.id}, Unit Number: ${d.unitNumber}</p>`).join('');
+                } else {
+                    outputDiv.innerHTML = '<b>No Included Units.</b>';
                 }
             });
 
