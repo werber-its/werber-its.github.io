@@ -66,7 +66,7 @@
 
             for (const [id, unit] of map1) {
                 if (!map2.has(id)) {
-                    differences.push({ id: unit.unitTypeId, unitNumber: unit.unitNumber });
+                    differences.push({ id: unit.unitTypeId, unitNumber: unit.unitNumber, unitType: unit.floorplanName });
                 }
             }
 
@@ -92,7 +92,7 @@
             for (const [id, unit] of map1) {
                 const count = Array.from(map1.values()).filter(u => u.id === id).length;
                 if (count > 1) {
-                    differences.push({ id: unit.unitTypeId, unitNumber: unit.unitNumber });
+                    differences.push({ id: unit.unitTypeId, unitNumber: unit.unitNumber, unitType: unit.floorplanName });
                 }
             }
 
@@ -112,7 +112,7 @@
 
             for (const [id, unit] of map1) {
                 const count = Array.from(map1.values()).filter(u => u.id === id).length;
-                units.push({ id: unit.unitTypeId, unitNumber: unit.unitNumber });
+                units.push({ id: unit.unitTypeId, unitNumber: unit.unitNumber, unitType: unit.floorplanName });
                 
             }
 
@@ -133,7 +133,7 @@
             duplicateUnits(city).then(differences => {
                 const outputDiv = document.getElementById('duplicates');
                 if (differences.length > 0) {
-                    outputDiv.innerHTML = '<h2>Duplicate Units:</h2>' + differences.map(d => `<p>ID: ${d.id}, Unit Number: ${d.unitNumber}</p>`).join('');
+                    outputDiv.innerHTML = '<h2>Duplicate Units:</h2>' + differences.map(d => `<p>ID: ${d.id}, Unit Number: ${d.unitNumber}, Unit Type: ${d.unitType}</p></p>`).join('');
                 } else {
                     outputDiv.innerHTML = '<p>No Duplicate Units.</p>';
                 }
@@ -142,7 +142,7 @@
             includedUnits(city).then(units => {
                 const outputDiv = document.getElementById('included-units');
                 if (units.length > 0) {
-                    outputDiv.innerHTML = '<h2>Included Units:</h2>' + units.map(d => `<p>ID: ${d.id}, Unit Number: ${d.unitNumber}</p>`).join('');
+                    outputDiv.innerHTML = '<h2>Included Units:</h2>' + units.map(d => `<p>ID: ${d.id}, Unit Number: ${d.unitNumber}</p>,  Unit Type: ${d.unitType}</p>`).join('');
                 } else {
                     outputDiv.innerHTML = '<b>No Included Units.</b>';
                 }
@@ -151,7 +151,7 @@
             compareUnits(city).then(differences => {
                 const outputDiv = document.getElementById('differences');
                 if (differences.length > 0) {
-                    outputDiv.innerHTML = '<h2>Excluded Units:</h2>' + differences.map(d => `<p>ID: ${d.id}, Unit Number: ${d.unitNumber}</p>`).join('');
+                    outputDiv.innerHTML = '<h2>Excluded Units:</h2>' + differences.map(d => `<p>ID: ${d.id}, Unit Number: ${d.unitNumber}, Unit Type: ${d.unitType}</p></p>`).join('');
                 } else {
                     outputDiv.innerHTML = '<p>No Excluded Units.</p>';
                 }
