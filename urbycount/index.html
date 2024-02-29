@@ -10,6 +10,8 @@
     </style>
 </head>
 <body>
+    <button id="updateAll">Update All Units</button>
+    <div id="updateStatus"></div>
     <h1>Compare Units</h1>
     <label for="citySelect">Select a city:</label>
     <select id="citySelect">
@@ -122,6 +124,27 @@
 
 
 
+        document.getElementById('updateAll').addEventListener('click', async () => {
+    // Reference to the update status div
+    const statusDiv = document.getElementById('updateStatus');
+    
+    // Indicate that the update process is starting
+    statusDiv.textContent = 'Updating content...';
+
+    try {
+        // Sequentially await the completion of each fetch request
+        await fetch('https://updateunits-rypeipxddq-uc.a.run.app/');
+        await fetch('https://updatelocationoverrides-rypeipxddq-uc.a.run.app/');
+        await fetch('https://updatefilteredunitsforallcities-rypeipxddq-uc.a.run.app/');
+
+        // After all fetch requests complete successfully, update the status
+        statusDiv.textContent = 'Update complete';
+    } catch (error) {
+        // If an error occurs during the fetch, log it and update the status accordingly
+        console.error('Update failed:', error);
+        statusDiv.textContent = 'Update failed. Check console for details.';
+    }
+});
         document.getElementById('compareBtn').addEventListener('click', () => {
             const city = document.getElementById('citySelect').value;
             const countDiv = document.getElementById('unitcount');
