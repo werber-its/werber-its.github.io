@@ -53,6 +53,11 @@
             const data = await fetchData(url);
             return data.units.length
         }
+        async function getCountAll(city) {
+            const url = `${baseurl2}${city}`;
+            const data = await fetchData(url);
+            return data.length
+        }
 
 
         async function compareUnits(city) {
@@ -151,9 +156,13 @@
         document.getElementById('compareBtn').addEventListener('click', () => {
             const city = document.getElementById('citySelect').value;
             const countDiv = document.getElementById('unitcount');
+            const countDivTotal = document.getElementById('unitcountTotal');
 
             getCount(city).then(count => {
                 countDiv.innerHTML = `<h2>Filtered Unit Count: ${count}</h2>`;
+            });
+            getCountAll(city).then(count => {
+                countDivTotal.innerHTML = `<h2>Total Unit Count: ${count}</h2>`;
             });
 
             duplicateUnits(city).then(differences => {
