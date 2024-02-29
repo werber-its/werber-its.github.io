@@ -72,7 +72,7 @@
 
             for (const [id, unit] of map2) {
                 if (!map1.has(id)) {
-                    differences.push({ id, unitNumber: unit.unitNumber });
+                    differences.push({ id, unitNumber: unit.unitNumber, unitType: unit.floorplanName });
                 }
             }
 
